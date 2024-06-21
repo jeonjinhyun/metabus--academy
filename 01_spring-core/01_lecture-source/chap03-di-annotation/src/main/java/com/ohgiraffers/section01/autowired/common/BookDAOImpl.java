@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository("BookDAO")
+@Repository("bookDAO")
 public class BookDAOImpl implements BookDAO{
 
     private final Map<Integer, BookDTO> bookList;
