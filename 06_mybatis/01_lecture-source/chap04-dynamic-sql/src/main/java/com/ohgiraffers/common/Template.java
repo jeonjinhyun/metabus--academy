@@ -9,15 +9,17 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Template {
+
     private static SqlSessionFactory sqlSessionFactory;
 
     public static SqlSession getSqlSession() {
-        if (sqlSessionFactory == null) {
+
+        if(sqlSessionFactory == null) {
             String resource = "config/mybatis-config.xml";
 
             try {
                 InputStream inputStream = Resources.getResourceAsStream(resource);
-                sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
+                sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

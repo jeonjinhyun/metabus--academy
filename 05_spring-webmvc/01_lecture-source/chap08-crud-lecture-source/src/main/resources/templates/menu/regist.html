@@ -8,8 +8,8 @@
   <div th:include="common/header.html"></div>
   <h3>신규 메뉴 등록</h3>
   <form action="/menu/regist" method="post">
-    <label>메뉴 이름 : </label><input type="text" name="menuName"><br>
-    <label>메뉴 가격 : </label><input type="number" name="menuPrice"><br>
+    <label>메뉴 이름 : </label><input type="text" name="name"><br>
+    <label>메뉴 가격 : </label><input type="number" name="price"><br>
     <label>카테고리 코드 : </label>
     <select name="categoryCode" id="categoryCode"></select><br>
     <label>판매 상태 : </label>
@@ -24,12 +24,11 @@
             .then(res => res.json())
             .then(data => {
               const $categoryCode = document.getElementById('categoryCode');
-              console.log(data);
+
               for(let index in data) {
                 const $option = document.createElement('option');
-                console.log(index);
-                $option.value = data[index].categoryCode;
-                $option.textContent = data[index].categoryName;
+                $option.value = data[index].code;
+                $option.textContent = data[index].name;
                 $categoryCode.appendChild($option);
               }
 

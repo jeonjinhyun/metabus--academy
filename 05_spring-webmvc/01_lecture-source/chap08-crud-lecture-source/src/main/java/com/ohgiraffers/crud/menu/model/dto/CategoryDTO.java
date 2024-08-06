@@ -2,33 +2,33 @@ package com.ohgiraffers.crud.menu.model.dto;
 
 public class CategoryDTO {
 
-    private int categoryCode;
-    private String categoryName;
+    private int code;
+    private String name;
     private int refCategoryCode;
 
     public CategoryDTO() {
     }
 
-    public CategoryDTO(int categoryCode, String categoryName, int refCategoryCode) {
-        this.categoryCode = categoryCode;
-        this.categoryName = categoryName;
+    public CategoryDTO(int code, String name, int refCategoryCode) {
+        this.code = code;
+        this.name = name;
         this.refCategoryCode = refCategoryCode;
     }
 
-    public int getCategoryCode() {
-        return categoryCode;
+    public int getCode() {
+        return code;
     }
 
-    public void setCategoryCode(int categoryCode) {
-        this.categoryCode = categoryCode;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getRefCategoryCode() {
@@ -42,8 +42,8 @@ public class CategoryDTO {
     @Override
     public String toString() {
         return "CategoryDTO{" +
-                "categoryCode=" + categoryCode +
-                ", categoryName='" + categoryName + '\'' +
+                "code=" + code +
+                ", name='" + name + '\'' +
                 ", refCategoryCode=" + refCategoryCode +
                 '}';
     }

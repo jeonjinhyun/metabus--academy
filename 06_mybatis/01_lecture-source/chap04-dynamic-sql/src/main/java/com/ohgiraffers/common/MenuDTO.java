@@ -1,14 +1,14 @@
 package com.ohgiraffers.common;
 
 public class MenuDTO {
+
     private int menuCode;
     private String menuName;
     private int menuPrice;
     private int categoryCode;
     private String orderableStatus;
 
-    public MenuDTO() {
-    }
+    public MenuDTO() {}
 
     public MenuDTO(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
         this.menuCode = menuCode;

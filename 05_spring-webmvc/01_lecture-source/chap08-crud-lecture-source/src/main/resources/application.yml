@@ -13,6 +13,4 @@ spring:
 ## mybatis config
 mybatis:
   mapper-locations: mappers/**/*.xml
-  type-aliases-package: com.ohgiraffers.crud.menu.model.dto
-  configuration:
-    map-underscore-to-camel-case: true
+

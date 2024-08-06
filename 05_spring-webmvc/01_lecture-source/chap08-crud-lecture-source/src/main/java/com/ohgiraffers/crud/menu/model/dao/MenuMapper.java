@@ -10,5 +10,7 @@ import java.util.List;
 public interface MenuMapper {
     List<MenuDTO> findAllMenu();
 
-    List<CategoryDTO>  registNewMenu(MenuDTO newMenu);
+    List<CategoryDTO> findAllCategory();
+
+    void registNewMenu(MenuDTO newMenu);
 }

@@ -2,45 +2,45 @@ package com.ohgiraffers.crud.menu.model.dto;
 
 public class MenuDTO {
 
-    private int menuCode;
-    private String menuName;
-    private int menuPrice;
+    private int code;
+    private String name;
+    private int price;
     private int categoryCode;
     private String orderableStatus;
 
     public MenuDTO() {
     }
 
-    public MenuDTO(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
-        this.menuCode = menuCode;
-        this.menuName = menuName;
-        this.menuPrice = menuPrice;
+    public MenuDTO(int code, String name, int price, int categoryCode, String orderableStatus) {
+        this.code = code;
+        this.name = name;
+        this.price = price;
         this.categoryCode = categoryCode;
         this.orderableStatus = orderableStatus;
     }
 
-    public int getMenuCode() {
-        return menuCode;
+    public int getCode() {
+        return code;
     }
 
-    public void setMenuCode(int menuCode) {
-        this.menuCode = menuCode;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public String getMenuName() {
-        return menuName;
+    public String getName() {
+        return name;
     }
 
-    public void setMenuName(String menuName) {
-        this.menuName = menuName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getMenuPrice() {
-        return menuPrice;
+    public int getPrice() {
+        return price;
     }
 
-    public void setMenuPrice(int menuPrice) {
-        this.menuPrice = menuPrice;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getCategoryCode() {
@@ -62,9 +62,9 @@ public class MenuDTO {
     @Override
     public String toString() {
         return "MenuDTO{" +
-                "menuCode=" + menuCode +
-                ", menuName='" + menuName + '\'' +
-                ", menuPrice=" + menuPrice +
+                "code=" + code +
+                ", name='" + name + '\'' +
+                ", price=" + price +
                 ", categoryCode=" + categoryCode +
                 ", orderableStatus='" + orderableStatus + '\'' +
                 '}';
