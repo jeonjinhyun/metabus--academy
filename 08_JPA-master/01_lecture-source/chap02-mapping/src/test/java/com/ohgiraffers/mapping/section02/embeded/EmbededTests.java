@@ -31,32 +31,6 @@ public class EmbededTests {
         );
     }
 
-    public static Stream<Arguments> negativePrice() {
-        return Stream.of(
-                Arguments.of(
-                        "자바의정석",
-                        "남궁성",
-                        "도우출판",
-                        LocalDate.now(),
-                        30000,
-                        0.1
-                )
-        );
-    }
-
-    public static Stream<Arguments> negativeDiscountRate() {
-        return Stream.of(
-                Arguments.of(
-                        "자바의정석",
-                        "남궁성",
-                        "도우출판",
-                        LocalDate.now(),
-                        30000,
-                        0.1
-                )
-        );
-    }
-
     @ParameterizedTest
     @MethodSource("getBook")
     void testCreateEmbeddedPriceOfBook(String bookTitle,
@@ -77,43 +51,32 @@ public class EmbededTests {
 
     }
 
-    @ParameterizedTest
-    @MethodSource("negativePrice")
-    void testNegativePrice(String bookTitle,
-                           String author,
-                           String publisher,
-                           LocalDate publishedDate,
-                           int regularPrice,
-                           double discountRate) {
-
-        BookRegistRequestDTO bookInfo =
-                new BookRegistRequestDTO(bookTitle,
-                        author, publisher, publishedDate,
-                        regularPrice, discountRate);
-
-        Assertions.assertDoesNotThrow(
-                () -> bookRegistService.registBook(bookInfo)
+    private static Stream<Arguments> negativePrice() {
+        return Stream.of(
+                Arguments.of(
+                        "자바의정석",
+                        "남궁성",
+                        "도우출판",
+                        LocalDate.now(),
+                        -30000,
+                        0.1
+                )
         );
-
     }
 
     @ParameterizedTest
-    @MethodSource("negativeDiscountRate")
-    void testNegativeDiscountRate(String bookTitle,
-                           String author,
-                           String publisher,
-                           LocalDate publishedDate,
-                           int regularPrice,
-                           double discountRate) {
+    @MethodSource("negativePrice")
+    void testNegativePrice(String bookTitle, String author, String publisher, LocalDate publishedDate,
+                           int regularPrice, double discountRate) {
 
         BookRegistRequestDTO bookInfo =
-                new BookRegistRequestDTO(bookTitle,
-                        author, publisher, publishedDate,
-                        regularPrice, discountRate);
+                new BookRegistRequestDTO(bookTitle, author, publisher, publishedDate, regularPrice, discountRate);
 
-        Assertions.assertDoesNotThrow(
+        Exception exception = Assertions.assertThrows(
+                IllegalArgumentException.class,
                 () -> bookRegistService.registBook(bookInfo)
         );
 
+        Assertions.assertEquals("가격은 음수일 수 없습니다.", exception.getMessage());
     }
 }

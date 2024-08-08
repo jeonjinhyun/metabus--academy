@@ -2,29 +2,28 @@ package com.ohgiraffers.persistence.section03.entity;
 
 import javax.persistence.*;
 
-@Entity(name = "Section03Menu")
+@Entity(name="Section03Menu")
 @Table(name="tbl_menu")
 public class Menu {
 
     @Id
-    @Column(name = "menu_code")
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @Column(name="menu_code")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int menuCode;
 
-    @Column(name = "menu_name")
+    @Column(name="menu_name")
     private String menuName;
 
-    @Column(name = "menu_price")
+    @Column(name="menu_price")
     private int menuPrice;
 
-    @Column(name = "category_code")
+    @Column(name="category_code")
     private int categoryCode;
 
-    @Column(name = "orderable_status")
+    @Column(name="orderable_status")
     private String orderableStatus;
 
-    public Menu() {
-    }
+    public Menu() {}
 
     public Menu(String menuName, int menuPrice, int categoryCode, String orderableStatus) {
         this.menuName = menuName;
@@ -47,7 +46,7 @@ public class Menu {
                 "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +
-                ", categoryCode='" + categoryCode + '\'' +
+                ", categoryCode=" + categoryCode +
                 ", orderableStatus='" + orderableStatus + '\'' +
                 '}';
     }
@@ -74,13 +73,5 @@ public class Menu {
 
     public void setMenuPrice(int menuPrice) {
         this.menuPrice = menuPrice;
-    }
-
-    public void setCategoryCode(int categoryCode) {
-        this.categoryCode = categoryCode;
-    }
-
-    public void setOrderableStatus(String orderableStatus) {
-        this.orderableStatus = orderableStatus;
     }
 }
