@@ -44,8 +44,8 @@ public class FirstController {
 
     @PostMapping("modify")
     public String modifyMenuPrice(Model model,
-                                  String modifyName,
-                                  int modifyPrice) {
+                                  @RequestParam String modifyName,
+                                  @RequestParam int modifyPrice) {
 
         System.out.println("modifyName = " + modifyName);
         System.out.println("modifyPrice = " + modifyPrice);
@@ -85,16 +85,16 @@ public class FirstController {
     public void login() {}
 
     @PostMapping("login1")
-    public String sessionTest1(HttpSession session,@RequestParam String id) {
+    public String sessionTest1(HttpSession session, @RequestParam String id) {
 
         session.setAttribute("id", id);
-
 
         return "first/loginResult";
     }
 
     @GetMapping("logout1")
     public String logoutTest1(HttpSession session) {
+
 //        session.removeAttribute("id");
 //        session.setMaxInactiveInterval(600);
         session.invalidate();
@@ -103,7 +103,7 @@ public class FirstController {
     }
 
     @PostMapping("login2")
-    public String sessionTest2(Model model,@RequestParam String id) {
+    public String sessionTest2(Model model, @RequestParam String id) {
 
         model.addAttribute("id", id);
 
@@ -111,7 +111,7 @@ public class FirstController {
     }
 
     @GetMapping("logout2")
-    public String logoutTest2(SessionStatus status){
+    public String logoutTest2(SessionStatus status) {
 
         status.setComplete();
 
@@ -119,15 +119,14 @@ public class FirstController {
     }
 
     @GetMapping("body")
-    public void body(){
-    }
+    public void body() {}
 
     @PostMapping("body")
     public void bodyTest(@RequestBody String body,
                          @RequestHeader("content-type") String contentType,
                          @CookieValue(value = "JSESSIONID", required = false) String sessionId) throws UnsupportedEncodingException {
 
-        System.out.println(URLDecoder.decode(body,"UTF-8"));
+        System.out.println(URLDecoder.decode(body, "UTF-8"));
         System.out.println(contentType);
         System.out.println(sessionId);
     }

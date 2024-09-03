@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .card {
+            border: 1px solid black;
+            width: 300px;
+            margin: 10px;
+            padding: 20px;
+            display: inline-block;
+        }
+        .card>* {
+            display: inline-block;
+        }
+        .card>img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const { useState, useEffect } = React;
+
+        function Card({ pokemon }) {
+
+            const [data, setData] = useState({});
+
+            useEffect(
+                () => {
+                    fetch(pokemon.url)
+                    .then(response => response.json())
+                    .then(json => setData(json));
+                },
+                []
+            );
+            console.log(data)
+            return (
+                <div className="card">
+                    { data.sprites && <img src={ data.sprites.front_default }/> }
+                    <div className="info">
+                        <h2>No. { data.id }</h2>
+                        <h3>name : { pokemon.name }</h3>
+                    </div>
+                </div>
+            );
+        }
+
+        function PokemonList() {
+
+            const [pokemons, setPokemons] = useState([]);
+
+            useEffect(
+                () => {
+                    fetch('https://pokeapi.co/api/v2/pokemon')
+                    .then(response => response.json())
+                    .then(data => setPokemons(data.results));
+                }, 
+                []
+            );
+
+            return (
+                <div>
+                    { pokemons.map(pokemon => <Card pokemon={ pokemon } key={ pokemon.name }/>) }    
+                </div>
+            );
+        }
+
+        function Title() {
+            
+            return <h1>포켓몬 목록</h1>
+        }
+
+        function App() {
+
+            return (
+                <>
+                    <Title/>
+                    <PokemonList/>
+                </>
+            );
+        }
+
+        /* 17 버전 */
+        // ReactDOM.render(<App/>, document.getElementById('root'));
+
+        /* 18 버전 */
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>

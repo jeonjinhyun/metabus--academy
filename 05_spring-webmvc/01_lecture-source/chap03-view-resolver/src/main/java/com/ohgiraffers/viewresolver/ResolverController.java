@@ -8,30 +8,31 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class ResolverController {
-    @GetMapping("string")
-    public String stringReturning(Model model){
 
-        model.addAttribute("forwardMessage","문자열로 뷰 이름 반환함...");
+    @GetMapping("string")
+    public String stringReturning(Model model) {
+
+        model.addAttribute("forwardMessage", "문자열로 뷰 이름 반환함...");
 
         return "result";
     }
 
     @GetMapping("string-redirect")
-    public String stringRedirect(){
+    public String stringRedirect() {
 
         return "redirect:/";
     }
 
     @GetMapping("string-redirect-attr")
-    public String stringRedirectAttr(RedirectAttributes rttr){
+    public String stringRedirectAttr(RedirectAttributes rttr) {
 
-        rttr.addFlashAttribute("flashMessage1","리다이랙트 attr 사용하여 redirect...");
+        rttr.addFlashAttribute("flashMessage1", "리다이랙트 attr 사용하여 redirect...");
 
         return "redirect:/";
     }
 
     @GetMapping("modelandview")
-    public ModelAndView modelAndViewReturning(ModelAndView mv){
+    public ModelAndView modelAndViewReturning(ModelAndView mv) {
 
         mv.addObject("forwardMessage", "ModelAndView를 이용한 모델과 뷰 반환");
         mv.setViewName("result");
@@ -40,7 +41,7 @@ public class ResolverController {
     }
 
     @GetMapping("modelandview-redirect")
-    public ModelAndView modelAndViewRedirect(ModelAndView mv){
+    public ModelAndView modelAndViewRedirect(ModelAndView mv) {
 
         mv.setViewName("redirect:/");
 
@@ -48,8 +49,9 @@ public class ResolverController {
     }
 
     @GetMapping("modelandview-redirect-attr")
-    public ModelAndView modelAndViewRedirectAttr(ModelAndView mv,RedirectAttributes rttr){
-        rttr.addFlashAttribute("flashMessage2","ModelAndView를 이용한 redirect attr");
+    public ModelAndView modelAndViewRedirectAttr(ModelAndView mv, RedirectAttributes rttr) {
+
+        rttr.addFlashAttribute("flashMessage2", "ModelAndView를 이용한 redirect attr");
         mv.setViewName("redirect:/");
 
         return mv;

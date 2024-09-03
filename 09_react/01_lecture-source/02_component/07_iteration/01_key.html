@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // arr.map(callback);
+
+        // const numbers = [1,2,3,4,5];
+        // const results = numbers.map(num => num * num);
+        // console.log(results);
+
+        // const fruits = ['사과', '바나나', '수박'];
+        // fruits.map((currentValue, index, array) => {
+        //     console.log(currentValue);
+        //     console.log(index);
+        //     console.log(array);
+        // });
+
+        function Item({names}) {
+
+            return (
+                <ul>
+                    {names.map((name, index) => <li key={index}>{name}</li>)}
+                </ul>
+            );
+        }
+
+        const names = ['홍길동', '유관순', '윤봉길', '이순신', '임꺽정'];
+
+        ReactDOM.createRoot(document.getElementById('root')).render(<Item names={names}/>)
+    </script>
+</body>
+</html>
