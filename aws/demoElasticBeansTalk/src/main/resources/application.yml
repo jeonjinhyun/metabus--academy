@@ -1,1 +1,7 @@
-spring.application.name=demoElasticBeansTalk
+spring:
+  profiles:
+    include: dev,local
+  #    active: dev
+  application:
+    name: demoElasticBeansTalk
+

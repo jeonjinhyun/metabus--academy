@@ -1,2 +1,4 @@
-package com.ohgiraffers.demoelasticbeanstalk.menu.dto;public class MenuDTO {
+package com.ohgiraffers.demoelasticbeanstalk.menu.dto;
+
+public class MenuDto {
 }
